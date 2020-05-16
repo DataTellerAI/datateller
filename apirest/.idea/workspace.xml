@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="09d28e3d-63ac-470b-8dcd-54395d6f2cf8" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1bsljMBhrRAGQ4xd2YdVQx4BmgV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mongo&#10;sqlite&#10;postgresql" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apiGender" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="09d28e3d-63ac-470b-8dcd-54395d6f2cf8" name="Default Changelist" comment="" />
+      <created>1589428817599</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589428817599</updated>
+      <workItem from="1589428827172" duration="6666000" />
+      <workItem from="1589479711742" duration="3124000" />
+      <workItem from="1589483235375" duration="21988000" />
+      <workItem from="1589553976389" duration="53000" />
+      <workItem from="1589577115739" duration="6400000" />
+      <workItem from="1589593304699" duration="6247000" />
+      <workItem from="1589663031124" duration="738000" />
+      <workItem from="1589663795887" duration="1598000" />
+      <workItem from="1589668701519" duration="3099000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="790" y="103" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589664767678">
+      <screen x="0" y="27" width="1600" height="808" />
+    </state>
+    <state x="790" y="103" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1600.808/1600.0.1280.1024@0.27.1600.808" timestamp="1589664767678" />
+    <state x="726" y="103" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1600.808@0.27.1600.808" timestamp="1589487725189" />
+    <state x="1600" y="103" width="1280" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.2880.808@0.27.2880.808" timestamp="1589502157698" />
+    <state x="496" y="232" width="598" height="396" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589481264577">
+      <screen x="0" y="27" width="1600" height="808" />
+    </state>
+    <state x="496" y="232" width="598" height="396" key="#com.intellij.fileTypes.FileTypeChooser/0.27.1600.808@0.27.1600.808" timestamp="1589481264577" />
+    <state x="583" y="188" width="424" height="484" key="FileChooserDialogImpl" timestamp="1589665596708">
+      <screen x="0" y="27" width="1600" height="808" />
+    </state>
+    <state x="583" y="188" width="424" height="484" key="FileChooserDialogImpl/0.27.1600.808/1600.0.1280.1024@0.27.1600.808" timestamp="1589665596708" />
+    <state width="263" height="500" key="HiddenNamespacesPopup" timestamp="1589669008589">
+      <screen x="0" y="27" width="1600" height="808" />
+    </state>
+    <state width="263" height="500" key="HiddenNamespacesPopup/0.27.1600.808/1600.0.1280.1024@0.27.1600.808" timestamp="1589669008589" />
+    <state width="263" height="500" key="HiddenNamespacesPopup/0.27.2880.808@0.27.2880.808" timestamp="1589502181760" />
+  </component>
+</project>
