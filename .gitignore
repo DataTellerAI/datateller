@@ -167,6 +167,5 @@ dmypy.json
 
 .vscode
 apirest/.env
-apirest/.env/bin
 __pycache__
 
