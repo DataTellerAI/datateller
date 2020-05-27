@@ -3,8 +3,10 @@ const API = process.env.REACT_APP_API;
 
 export const Users = () => {
   const [name, setName] = useState("");
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
+
+ 
   //object to retrieve errors -----> delete once db is ready
   const dataError = {
     Nombres: "Not Found",
@@ -16,15 +18,14 @@ export const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${API}${name}`);
-    const data = await res.json();
-    console.log(data)
-
-    // if (typeof data.name === "undefined") {
-    //   setUser(dataError);
-    // } else {
+    try{
+      const res = await fetch(`${API}${name}`);
+      const data = await res.json();
       setUser(data);
-    // }
+    }
+    catch {
+      setUser(dataError);
+    }
   };
 
   return (
