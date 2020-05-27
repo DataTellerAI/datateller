@@ -26,7 +26,7 @@ vectorizer
 # word_mat = vectorizer.transform(db['Nombres'])
 # word_mat
 
-name_vec = vectorizer.fit_transform(db['Nombres'])
+name_vec = vectorizer.transform(db['Nombres'])
 y = db['Genero'].values
 print('shape of the vectorized data is: ', name_vec.shape)
 
@@ -38,8 +38,12 @@ model.fit(X_train, y_train)
 print('training completed!')
 
 classifier = model.fit(X_train, y_train)
-
 prediction = model.predict(X_test)
+
+type(X_test)
+print('shape of the vectorized data is: ', X_test.shape)
+
+
 
 cm = confusion_matrix(y_test, prediction)
 # Recall
@@ -70,25 +74,27 @@ for title, normalize in titles_options:
 
 plt.show()
 
-name = ['Andres', 'Juan']
-pred = model.predict(name, label_str=True)
-model.predict_proba(name)
 
 
-# input = sys.argv[1].lower()
-# gender = ''
-# probability = ''
-# # if (len(input) == 2): 
-	
-# name = input.split(" ") 
 
-# if (name[0][-1] == 'a'): 
-# 	gender = 'Female'
-# 	probability = 1
-# elif (name[0][-1] == 'o'): 
-# 	gender = 'Male'
-# 	probability = 1
+# use vector.vocabulary for predict
+name = ['Pedro','Julian','Juan','Luz','Carmen']
+vectorizer = CountVectorizer().fit(db['Nombres'])
+text_vector = vectorizer.transform(name)
+model.predict(text_vector)
+model.predict_proba(text_vector)
 
-print('Name: {}\nGender: {}\nProbability: {}'.format(input.title(), gender, probability))
+
+
+
+nom = df[df['Nombres']=='Pedro']
+name = ['Pedro']
+names = vectorizer.transform(name)
+type(names)
+print('shape of the vectorized data is: ', names.shape)
+model.predict(names)
+model.predict_proba(text_vector)
+
+# print('Name: {}\nGender: {}\nProbability: {}'.format(input.title(), gender, probability))
 
 

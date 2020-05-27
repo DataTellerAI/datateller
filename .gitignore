@@ -166,6 +166,8 @@ dmypy.json
 
 
 .vscode
+.venv
 apirest/.env
 __pycache__
+node_modules
 
