@@ -12,11 +12,11 @@ class Consulta(APIView):
         print(name)
 
         client = MongoClient(
-            "mongodb+srv://Campo:Campo1987@names-f54kh.mongodb.net/test?retryWrites=true&w=majority")
+            "mongodb+srv://backend:Seguridad1234@datateller1-clzfs.mongodb.net/test?retryWrites=true&w=majority")
         _myDict = {}
-        db = client.Names
+        db = client.datateller
         filter = {"Nombres": name}
-        objs = db.genderName.find(filter)
+        objs = db.namesdb.find(filter)
         for obj in objs:
             MyObj = obj
         _myDict['Nombres'] = name

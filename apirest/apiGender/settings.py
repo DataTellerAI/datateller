@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'HOST': 'mongodb+srv://backend:Seguridad1234@datateller1-clzfs.mongodb.net/DB?retryWrites=true&w=majority',
         'ENGINE': 'djongo',
-        'NAME': 'DB',
+        'NAME': 'datateller',
         'USER': 'backend',
         'PASSWORD': 'Seguridad1234',
     }
