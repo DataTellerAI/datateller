@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'by_name',
+    'apps.by_name',
 ]
 
 MIDDLEWARE = [
@@ -76,24 +76,17 @@ WSGI_APPLICATION = 'apiGender.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-"""
+
 DATABASES = {
     'default': {
+        'HOST': 'mongodb+srv://backend:Seguridad1234@datateller1-clzfs.mongodb.net/DB?retryWrites=true&w=majority',
         'ENGINE': 'djongo',
-        'NAME': 'Names',
-        'HOST': "mongodb+srv://Campo:Campo1987@names-f54kh.mongodb.net/test?retryWrites=true&w=majority",
+        'NAME': 'DB',
+        'USER': 'backend',
+        'PASSWORD': 'Seguridad1234',
     }
 }
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'data-teller',
-        'HOST': 'localhost',
-        'USER': 'luz',
-        'PASSWORD': '123',
-    }
-}
+
 
 
 # Password validation
