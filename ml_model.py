@@ -57,7 +57,6 @@ print('accuracy: {}, precision: {}, recall: {}'.format(acc, precision, recall))
 
 model.score(X_test, y_test)
 
-
 np.set_printoptions(precision=2)
 class_names=['Hombre','Mujer']
 # Plot non-normalized confusion matrix
@@ -78,22 +77,13 @@ plt.show()
 
 
 # use vector.vocabulary for predict
-name = ['Pedro','Julian','Juan','Luz','Carmen']
+name = ['Juliana','Julian','Juan','Juana','Luz','Carmen', 'Sharo', 'Sharito']
 vectorizer = CountVectorizer().fit(db['Nombres'])
 text_vector = vectorizer.transform(name)
 model.predict(text_vector)
 model.predict_proba(text_vector)
 
-
-
-
-nom = df[df['Nombres']=='Pedro']
-name = ['Pedro']
-names = vectorizer.transform(name)
-type(names)
-print('shape of the vectorized data is: ', names.shape)
-model.predict(names)
-model.predict_proba(text_vector)
+å
 
 # print('Name: {}\nGender: {}\nProbability: {}'.format(input.title(), gender, probability))
 
