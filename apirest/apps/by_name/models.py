@@ -1,13 +1,18 @@
-import pymongo
 from django.db import models
 
 
-
-# Create your models here.
 class Person(models.Model):
-    names = models.TextField(max_length=20, null=False)
-    gende = models.CharField(max_length=1, null=False)
-
+    Nombres = models.TextField(max_length=100, null=False, unique=True)
+    Nombres2 = models.TextField(max_length=100, null=False)
+    Genero = models.TextField(max_length=6, null=False)
+    Probabilidad = models.FloatField()
+    Frecuencia = models.FloatField()
+    Pais = models.TextField(max_length=100, null=False)
+    EdadMedia = models.FloatField()
 
     def __str__(self):
-        return self.names + self.gende
+        return f'{self.Nombres}: {self.Genero}'
+
+
+
+
