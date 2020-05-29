@@ -279,7 +279,7 @@ save(nombres, file = '/Users/campopinillos/Documents/Proyecto Final/nombres.RDat
 
 # Data for ML Model -----------------------------------------------------------------
 
-# load("/Users/campopinillos/Documents/Proyecto Final/nombres.Rdata")
+load("/Users/campopinillos/Documents/Proyecto Final/nombres.Rdata")
 
 nombres <- nombres %>%
   ungroup() %>% 
@@ -318,7 +318,10 @@ table(is.na(nombres2$Probabilidad))
 table(is.na(nombres2$Frecuencia))
 table(is.na(nombres2$Pais))
 
-nombres_json=toJSON(nombres2, pretty = TRUE)
+id <- c(1:nrow(nombres2))
+nombres2 <- cbind(id, nombres2)
+
+nombres_json=toJSON(nombres2, pretty = TRUE, .withNames=T)
 writeLines(nombres_json, "/Users/campopinillos/Documents/Proyecto Final/nombres.JSON")
 
 
