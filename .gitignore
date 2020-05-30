@@ -170,4 +170,4 @@ dmypy.json
 apirest/.env
 __pycache__
 node_modules
-
+pruebas.py
