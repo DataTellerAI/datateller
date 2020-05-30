@@ -51,11 +51,13 @@ class GenderClassifier:
             ndarray: encoded labels, y_train and y_test
         """
         df = pd.read_excel(file_name)
+        # This is not always needed
         df = df[df.Genero != 'Ambiguo']
-        db = df[df.Probabilidad == 1.0].filter(['Genero', 'Nombres'])
-        pd.Categorical(db.Genero)
-        X = db['Nombres']
-        labels = db['Genero'].values.reshape(-1, 1)
+        df = df[df.Probabilidad == 1.0].filter(['Genero', 'Nombres'])
+        # This is not always needed
+        pd.Categorical(df.Genero)
+        X = df['Nombres']
+        labels = df['Genero'].values.reshape(-1, 1)
         self.label_encoder = OrdinalEncoder().fit(labels)
         labels = self.label_encoder.transform(labels)
         return train_test_split(X, labels.ravel(), test_size=tSize)
@@ -144,7 +146,7 @@ class GenderClassifier:
             names(list/Pandas Series/ndarray): names data
             labels(ndarray): ground truth
         """
-        pred = self.predict(names)
+        pred = self.predict_gender(names)
         cm = confusion_matrix(labels, pred)
         # Recall
         recall = (np.diag(cm)) / (np.sum(cm, axis=1))
@@ -187,8 +189,8 @@ class GenderClassifier:
                                          cmap=plt.cm.Blues,
                                          normalize=normalize)
             disp.ax_.set_title(title)
-            print(title)
-            print(disp.confusion_matrix)
+            # print(title)
+            # print(disp.confusion_matrix)
         plt.show()
 
     def get_word_dict(self, corpus=None):
@@ -243,20 +245,18 @@ class GenderClassifier:
         # save this class itself as pickle??
         pickle.dump(self, open(file_name, 'wb'))
     
-    def ml_model(self, data_frame='/Users/campopinillos/Documents/Proyecto Final/nombresFull.xlsx'):
+    def ml_model(self, data_frame):
         """
         Run all model traing proccess and get output.
         Param:
             data_frame(string): path to the data.
         """
         x_train, x_test, y_train, y_test = self.load_data(file_name=data_frame, tSize=0.3)
-        print('Names data: \n', x_train.sample(10))
-        print('\nGender: ', np.unique(y_train))
         clf = self.train(x_train, y_train)
         metrics = self.evaluate(x_test, y_test)
         print('Accuracy: {}%\nPrecision: {}%\nRecall: {}%'.format(metrics['accuracy']*100,
                                                                   metrics['precision'][0]*100,
                                                                   metrics['recall'][0]*100))
-        pred = self.predict(x_test)
+        pred = self.predict_gender(x_test)
         self.plot_confusion(clf, x_test, y_test)
         self.save_model('saved_model.pickle')
