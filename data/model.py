@@ -21,12 +21,15 @@ class GenderClassifier:
         load_data
         train
         evaluate
-        predict
+        predict_gender
+        predict_probability
+        prediction
         get_word_dict
         get_label_str
         plot_confusion
         saveModel
         loadModel
+        ml_model
     """
     def __init__(self):
         """
@@ -71,7 +74,7 @@ class GenderClassifier:
         # train the ML model
         return self.model.fit(self.word_vec, y_train)
 
-    def predict(self, names, label_str=False):
+    def predict_gender(self, names, label_str=False):
         """
         Predict name's origin based on the test data.
         Returns encoded label by default, but returns
@@ -91,6 +94,42 @@ class GenderClassifier:
         else:
             result = self.label_encoder.inverse_transform(pred.reshape(-1, 1))
             return result.ravel()
+
+    def predict_probability(self, names):
+        """
+        Predict probability of the name's gender based on the test data.
+        Returns probability
+
+        Param:
+            names(ndarray/Pandas Series/list): containing names
+        Return:
+            array: containing probabilities.
+        """
+        name_vector = self.vec.transform(names)
+        pred = self.model.predict_proba(name_vector)
+        array = np.array([])
+        for gender_probs in pred:
+            result = np.round(np.max(gender_probs), 2)
+            array = np.append(array, result)
+        return array
+
+    def prediction(self, names, label_str=False):
+        """
+        Predict gender and probability of the name's gender
+        based on the test data.
+        Returns full answers with names
+
+        Param:
+            names(ndarray/Pandas Series/list): containing names
+        Return:
+            pd.Dataframe: containing answer.
+        """
+        gender = self.predict_gender(names)
+        probab = self.predict_probability(names)
+        df = pd.DataFrame({'Names': names,
+                           'Gender': self.get_label_str(gender),
+                           'Probability': probab})
+        return df
 
     def evaluate(self, names, labels):
         """
