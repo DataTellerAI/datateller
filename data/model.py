@@ -249,11 +249,11 @@ class GenderClassifier:
         """
         Run all model traing proccess and get output.
         Param:
-            data_frame(string): path to the data.
+            df(string): path to the data.
         """
         x_train, x_test, y_train, y_test = self.load_data(file=df,
                                                           tSize=0.3)
-        self.train(self.x_train, self.y_train)
+        self.train(x_train, y_train)
         metrics = self.evaluate(x_test, y_test)
         print('Accuracy: {}%\n\
                Precision: {}%\n\
