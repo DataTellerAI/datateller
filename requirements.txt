@@ -1,5 +1,5 @@
 bson==0.5.8
-dataclasses==0.6
+dataclasses==0.7
 Django==2.2.12
 django-cors-headers==3.3.0
 djangorestframework==3.11.0
