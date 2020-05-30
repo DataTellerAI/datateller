@@ -37,11 +37,11 @@ class GenderClassifier:
         """
         self.model = MultinomialNB()
 
-    def load_data(self, file_name, tSize=0.3):
+    def load_data(self, file, tSize=0.3):
         """
         Load the data, encode the labels, and split into train and test set.
         Params:
-            file_names(string): file path & name to the csv or xlsx file
+            file(string): file path & name to the csv or xlsx file
             test_size(float): ratio of testing set, between 0 & 1
         Return: x_train, x_test(as pandas series of names), y_train,
                 y_test(as numpy arr of labels). These elements will be
@@ -50,7 +50,7 @@ class GenderClassifier:
             Pandas Series: name data, X_train and X_test
             ndarray: encoded labels, y_train and y_test
         """
-        df = pd.read_excel(file_name)
+        df = pd.read_excel(file)
         # This is not always needed
         df = df[df.Genero != 'Ambiguo']
         df = df[df.Probabilidad == 1.0].filter(['Genero', 'Nombres'])
@@ -74,7 +74,8 @@ class GenderClassifier:
         self.vec = CountVectorizer().fit(X_train)
         self.word_vec = self.vec.transform(X_train)
         # train the ML model
-        return self.model.fit(self.word_vec, y_train)
+        self.clf = self.model.fit(self.word_vec, y_train)
+        return self.clf
 
     def predict_gender(self, names, label_str=False):
         """
@@ -168,7 +169,7 @@ class GenderClassifier:
         res = self.label_encoder.inverse_transform(labels.reshape(-1, 1))
         return res.ravel()
 
-    def plot_confusion(self, classifier, X_test, y_test):
+    def plot_confusion(self, X_test, y_test):
         """
         Plot confusion matrix, based on given labels and prediction
         Param:
@@ -176,13 +177,12 @@ class GenderClassifier:
             prediction_test(ndarray): predicted labels
         """
         np.set_printoptions(precision=2)
-        class_names=['Hombre','Mujer']
-        
+        class_names = ['Hombre', 'Mujer']
         # Plot non-normalized confusion matrix
         titles_options = [("Confusion matrix, without normalization", None),
-                        ("Normalized confusion matrix", 'true')]
+                          ("Normalized confusion matrix", 'true')]
         for title, normalize in titles_options:
-            disp = plot_confusion_matrix(classifier,
+            disp = plot_confusion_matrix(self.clf,
                                          self.vec.transform(X_test),
                                          y_test,
                                          display_labels=class_names,
@@ -244,19 +244,22 @@ class GenderClassifier:
         """
         # save this class itself as pickle??
         pickle.dump(self, open(file_name, 'wb'))
-    
-    def ml_model(self, data_frame, output='saved_model.pickle'):
+
+    def ml_model(self, df, output='saved_model.pickle'):
         """
         Run all model traing proccess and get output.
         Param:
             data_frame(string): path to the data.
         """
-        x_train, x_test, y_train, y_test = self.load_data(file_name=data_frame, tSize=0.3)
-        clf = self.train(x_train, y_train)
+        x_train, x_test, y_train, y_test = self.load_data(file=df,
+                                                          tSize=0.3)
+        self.train(self.x_train, self.y_train)
         metrics = self.evaluate(x_test, y_test)
-        print('Accuracy: {}%\nPrecision: {}%\nRecall: {}%'.format(metrics['accuracy']*100,
-                                                                  metrics['precision'][0]*100,
-                                                                  metrics['recall'][0]*100))
+        print('Accuracy: {}%\n\
+               Precision: {}%\n\
+               Recall: {}%'.format(metrics['accuracy']*100,
+                                   metrics['precision'][0]*100,
+                                   metrics['recall'][0]*100))
         pred = self.predict_gender(x_test)
-        self.plot_confusion(clf, x_test, y_test)
+        self.plot_confusion(x_test, y_test)
         self.save_model(output)
