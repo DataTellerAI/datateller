@@ -245,7 +245,7 @@ class GenderClassifier:
         # save this class itself as pickle??
         pickle.dump(self, open(file_name, 'wb'))
     
-    def ml_model(self, data_frame):
+    def ml_model(self, data_frame, output='saved_model.pickle'):
         """
         Run all model traing proccess and get output.
         Param:
@@ -259,4 +259,4 @@ class GenderClassifier:
                                                                   metrics['recall'][0]*100))
         pred = self.predict_gender(x_test)
         self.plot_confusion(clf, x_test, y_test)
-        self.save_model('saved_model.pickle')
+        self.save_model(output)
