@@ -56,7 +56,7 @@ class GenderClassifier:
         df = df[df.Probabilidad == 1.0].filter(['Genero', 'Nombres'])
         # This is not always needed
         pd.Categorical(df.Genero)
-        X = df['Nombres']
+        X = df['Nombres'].str.lower()
         labels = df['Genero'].values.reshape(-1, 1)
         self.label_encoder = OrdinalEncoder().fit(labels)
         labels = self.label_encoder.transform(labels)
@@ -256,8 +256,8 @@ class GenderClassifier:
         self.train(x_train, y_train)
         metrics = self.evaluate(x_test, y_test)
         print('Accuracy: {}%\n\
-               Precision: {}%\n\
-               Recall: {}%'.format(metrics['accuracy']*100,
+Precision: {}%\n\
+Recall: {}%'.format(metrics['accuracy']*100,
                                    metrics['precision'][0]*100,
                                    metrics['recall'][0]*100))
         pred = self.predict_gender(x_test)
