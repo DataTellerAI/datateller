@@ -5,8 +5,6 @@ export const Users = () => {
   const [name, setName] = useState("");
   const [user, setUser] = useState({});
 
-
- 
   //object to retrieve errors -----> delete once db is ready
   const dataError = {
     Nombres: "Not Found",
@@ -18,12 +16,11 @@ export const Users = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
+    try {
       const res = await fetch(`${API}${name}`);
       const data = await res.json();
       setUser(data);
-    }
-    catch {
+    } catch {
       setUser(dataError);
     }
   };
@@ -76,17 +73,7 @@ export const Users = () => {
       <div
         className="container"
         style={{ justifyContent: "center", display: "flex" }}
-      >
-        {/* <div className="card" style={{ width: "50%", border: "none" }}>
-          <img
-            className="card-img-top"
-            src={user.image}
-            alt=""
-            style={{ width: "100%" }}
-          />
-          <div className="card-body"></div>
-        </div> */}
-      </div>
+      ></div>
     </>
   );
 };
